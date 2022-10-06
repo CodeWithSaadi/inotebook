@@ -21,7 +21,7 @@ import Profile from './components/Profile';
 function App() {
 
 
-  const [alert, setAlert] = useState(null)                                 // useState for Alert
+  const [alert, setAlert] = useState(null)                                 // useState for Alert     ddddddddddddddddddddddddddddddddd
 
   //Alert function-----------------
   const showAlert = (message, type) => {
