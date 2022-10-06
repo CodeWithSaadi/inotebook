@@ -1,0 +1,129 @@
+this is inotebook-backend          // video 42 + 43
+steps of doing work here:
+
+terminal--
+npm init
+npm i express
+npm i mongoose             -- abstraction layer which help to connect to nodejs
+
+
+add node_module in getignore file to not push node_module files
+
+install "mongoDb" and "mongoDB Compass" on local desk
+
+"db.js" is used to connect mongoseDB  --   connect your "mongoDB Compass" in beackend "db.js" ,, call them from "index.js" ,, install in terminal "npm i -D nodemon"
+
+"nodemon .\index.js" (use to start)   -- show coonected to mongoo
+
+copy code from express js to index.js -- run port 3000 on thunder client    -- your website running on localhost
+
+add header -- content-type -- application json
+____________________________________________
+                        // video 44
+have to create "model" and "routes"
+
+in 'Models" create to Schemas i.e  "User.js" and "Notes.js" 
+create auth.js file, and create routes in file which is call by index.js file.        app.use -- routes.get
+
+       ____________________________________________
+                   // video 45    
+
+add middleware in index.json
+
+******// ROUTE 2 -- Create a user using: POST '/api/auth'. Does'nt required Auth     -- in auth.js   -- 
+
+call user.js data in auth.js
+
+CONNECT MONGODB COMPASS TO MONGODB ATLAS
+
+change router.get to router.post    -- to send post request
+
+_____________________________________________________
+                   // video 46
+
+express-validator:  is used to check the enter value is correct
+
+install package  npm install --save express-validator
+
+//import express validator
+
+use express validator in router.post 
+
+to not allow duplicate data createIndexes() in user.js
+
+_____________________________________________________
+                   // video 47
+  remove createIndexes() and implement logic in auth.js
+
+  Creating ThunderClient Collections to Manage Requests   -- Collection-- newFile -- NewRequest    (which can export)   
+
+  Try-Catch implement in auth.js -- to check error inside --(not error of repeating unique key)     
+
+  _____________________________________________________
+                   // video 48
+Password Secure:  Hashing and Salt and Pepper                
+  _____________________________________________________
+                   // video 49
+
+     npm i bcryptjs       //bcrypt is library to hash
+
+     const bcrypt = require('bcrypt');   //import bcryptjs 
+     code to generate hash and salt in auth.js
+
+     When user Login what we have to return? We return them a token, here in this MERN we use "jwt nodejs" token (json webtoken)--   // When a user login we give him a token, when next time he arrive we authorized them by checking his token
+
+     token include secret sign -- function  jwd.sign(__)
+
+       _____________________________________________________
+                   // video 50
+
+ ******// ROUTE 2 -- Authenticate a user using: POST "api/auth/login". No login required
+                     
+        Creating Login Endpoint & sending auth token            -- //when user login then authtoken received to user
+
+
+
+              _____________________________________________________
+                   // video 51
+
+                
+*******// ROUTE 3 -- Get loggedIn User detail using : POST "api/auth/getuser". login required
+
+  //add middleware folder/files (userfetch,js) -- middleware is a function used in nodejs -- it can be called anywhere, where we want to use it
+
+   call userfetch in auth.js in ROUTE 3
+
+   Header: in thunder client add request "Get User Data" and add header which include in fetchUser.js (const token = req.header('auth-token');) and token which provided by "UserLOGIN"
+  
+So by providing token in header I recived userID
+
+ _____________________________________________________
+                   // video 52
+                   
+                   Fetching all notes & Adding a Note  :-- 
+                   
+                    notes.js    (Similar to user.js)
+ in notes.js create Routes for notes                  
+// ROUTE 1 -- Get All Note using : GET "api/note/fetchallnotes".   login required             
+
+to: The notes of user is not seen by other user , mention in Notes.js
+
+// ROUTE 2 -- Add a new Note using : POST "api/note/addnote".   login required
+imp express validator in notes.js
+
+All notes is saved in mondoDB and can fetch 
+
+ _____________________________________________________
+                   // video 53
+
+// ROUTE 3 --Update an existing using : GET "api/note/fetchallnotes".   login required  
+
+to update and delete first have to check the user is enter by there own id, or unauthorized user is trying to access data
+
+
+ _____________________________________________________
+                   // video 54
+
+ // ROUTE 4 --Delete Note using : GET "api/note/fetchallnotes".   login required 
+
+ Similar to (update note)                  

@@ -1,0 +1,221 @@
+Steps:
+
+__________________________________________________
+               video 55
+npm i react-router-dom concurrently   -- // concurrently help to eun diffrent server on difrrent terminal at same time(simuiltanicly)
+
+to run two server simiultanisasly have to add 'both' in package.json with command at 'script'     i.e      "both": "concurrently \"npm run start\" \"nodemon backend/index.js\""
+
+npm run both
+
+__________________________________________________
+               video 56
+
+create "compennets " -- 'Home.js' + 'About.js' + 'Navbar.js'   
+
+react router setup -- Router-Routes-Route     (Link is defined in App.js)
+
+
+__________________________________________________
+               video 57
+Introduction to React Context API
+
+__________________________________________________
+               video 58
+useContext hook: Using React Context API 
+
+create "context" folder then "context\notes"  -- 'NoteContext.js' + 'NoteState.js' 
+
+//The NoteContext is declare in notecontext.js and value provided in NoteState.js 
+// use <NoteState> on <Router> in app.js then import "import { useContext } from 'react'" + "import NoteContext from '../context/notes/NoteContext'"   -- in the compennet where you want to Context Data
+
+//the "useState" function is defined in 'NoteState.js' and useEffect in 'About.js' (We can use a function or a value in Context)
+
+__________________________________________________
+               video 59
+
+"useLocation Hook in React"     = is use to active nav of compennet which is in use  i.e  Home/About         **Problem:** as i use link as a props from app.js to navbar.js so the problem accure that in props can't send variable 'location.name' as variable is declare in Navbar.js   ---  i.e --    {/* <Navbar home={<Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} aria-current="page" to="/home">Home</Link>} about={<Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>} /> */}      (some how i understand the concept and easy to use)
+
+__________________________________________________
+               video 60
+
+iNotebook: Fetching Notes from Context 
+
+Have to call API to fetch notes but first hardcode to in NoteState.js then import in Home.js
+
+after importing 'useContext' and 'NoteContext' in Home.js -- declare function (on top) and "map" where you want to use  (in next video moved to 'Notes.js')
+
+
+__________________________________________________
+               video 61
+
+iNotebook: Adding NoteItem in a Separate Note component i.e "./compennets/Notes.js"
+
+create Note.js and Noteitem.js...
+import component Note.js in Home.js -&- Noteitem.js in Note.js
+
+
+
+__________________________________________________
+               video 62
+
+Adding font awesome icons to iNotebook 
+
+Add font awesome kit Code in ./public/index.html
+
+Use of alert
+
+
+__________________________________________________
+               video 63
+
+Adding AddNote component to iNotebook
+
+Create functions in NoteState.js
+  // Add a Note
+
+  //Delete a note
+
+  // Edit a note
+
+  have to call API on functions and push
+
+  create compennets/AddNote.js import them in  Notes.js        // = declare form and use onClick() in submit button and  onChange() on input fields 
+
+  onChange functions add values in form
+  
+  Working
+
+
+  __________________________________________________
+               video 64
+Adding "delete note" functionality to iNotebook
+
+use function in context i.e NoteState.js and called them in NoteItem.js
+
+Working👍....
+
+  __________________________________________________
+               video 65
+Adding "fetch notes" functionality to iNotebook: 
+
+Add 'Edit function' in NoteState.js using "for" loop  (further work in video 66)
+
+Fetching api -- You can search from goggle "Fetch Api Header" and copy
+
+add Api call function
+
+Terminal:  cd .\backend\   -- npm install cors    -- then add there function in backend/index.js     as  //  cors file is must to add when adding data from api call from front end
+
+Called the api on every function corresponding to there api ..........Working👍
+
+
+  __________________________________________________
+               video 66
+Adding a Modal for Editing Notes:
+
+Declare function 'updateNote()' in Notes.js and pass to NoteItems.js as props
+
+Modal from boostrap is used to edit notes -- put it in Notes.js -- to open Modal use JS "ref.current.click()"  also import 'useRef' and use in div of button to open
+
+copy form of note from AddNote.js past inside 'modal-body' of Notes.js also with functions of from  (but not good practice b/c its good to create editNote form in new component)
+
+
+  __________________________________________________
+               video 67
+ Updating Notes on edit in the UI using React 
+
+in Notes.js
+ Set for loop create newFunction in NotesState.js                     CRUD operation is Working Perfectly 👍👍👍👍
+
+   __________________________________________________
+               video 68
+ 
+ adding min length on input fields on 'Add new Note' in AddNote.js
+ adding min length on input fields on 'Update Note' in Notes.js             CRUD operation is Working Perfectly 👍👍👍👍
+  
+
+
+   
+              __________________________________________________
+              __________________________________________________
+              __________________________________________________
+               video 69
+Adding "LogIn" Component to iNotebook
+
+Create Login.js + Signup.js  componentes - Routes them in App.js - and Link to buttons in Navbar.js
+
+
+Crate LOGIN.js
+
+on handleSubmit function create 'if'  condition to    //Save the authtoken and redirect
+
+to redirect data old version { useHistory } is replaced by { useNavigate}      --  import - let --  navigate('/');     👍
+
+
+   __________________________________________________
+               video 70
+Adding "SignUp" Component to iNotebook
+
+similar to signUp
+
+   __________________________________________________
+               video 71
+Adding Alerts to Login, Signup & Notes Component of iNotebook |  
+
+passing "showALtert" from compennet to compennet,   (not good b/c good is to pass through "context" (and i have to do this latter⏰)) 
+
+
+in files       const { showAlert } = props  //destructuring method    --          props.showAlert("Updated Successfully", "success")
+
+   __________________________________________________
+               video 72
+               Fetching User Specific Notes in iNotebook
+ 
+authtoken is replaced from hard-code -- tauthtoken will come from local storage  ----         'auth-token': localStorage.getItem('token')
+
+apply 'if' condition for token in Notes.js
+
+"logout" button and info declare in Navbar.js 
+
+iNotebook is Completed 👍👍👍👍👍👍👍👍
+
+
+
+
+
+__________________________________________________________________________________________________________________________________________________________
+             ---------------------------------------------------------------------------------------------------------------------------------
+___________________________________________________________________________________________________________________________________________________________
+
+Adding redux to coubt notes
+
+Overall view
+
+changes in outermost 'index.js'
+create 'Navbar.js' + 'Shop.js' in components
+claled them in app.js
+create 'state' folder
+'action-creator' in components/state   --   'index.js'
+'reducers' in components/state         --   'amountReducer.js' + 'index.js'
+'index.js' in components/state
+'store.js' in components/state
+
+
+
+
+
+
+__________________________________________________________________________________________________________________________________________________________
+             ---------------------------------------------------------------------------------------------------------------------------------
+___________________________________________________________________________________________________________________________________________________________
+
+PERSONAL Working
+
+ADDING PROFILE:   create profile .js 
+                 create  // FETCH USER -- in NoteState.js
+
+EDIT PROFILE:    First in backend create Edit profile -- routes/notes.js  -- // ROUTE 4 -- Update User detail using
+                 api is working Editing User name in backend Api call
+                 add on 
+                                  
